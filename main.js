@@ -1,4 +1,9 @@
+//set preloading animation
+let proloader=document.getElementById('proloader');
 
+window.addEventListener('load',()=>{
+  proloader.style.display='none';
+})
 
 //setting game name
 let gameName="Guess the word";
@@ -90,13 +95,13 @@ guessBtn.addEventListener("click",handelGuesses)
 
 function handelGuesses(){
     let sucssesGuess=true;
-    console.log(wordToGuess)
+    // console.log(wordToGuess)
     for (let i = 1; i <= numberofLetters; i++) {
         let inputField=document.querySelector(`#guess-${cuurentTry}-letter-${i}`);
         let letter=inputField.value.toLowerCase();
         
         const actualLetter=wordToGuess[i-1];
-        console.log(actualLetter)
+        // console.log(actualLetter)
 
         //Game logic
         if(letter === actualLetter){
@@ -174,15 +179,15 @@ function handelHints(){
 
         // wordToGuess=words[Math.floor(Math.random()* words.length)].toLowerCase();
         const hint=wordToGuess[Math.floor(Math.random()* wordToGuess.length)].toLowerCase();
-        console.log(hint)
+        // console.log(hint)
 
         const enabledInputs=document.querySelectorAll('input:not([disabled])');
         const emptyEnabledInputs=Array.from(enabledInputs).filter((input)=>input.value ==='')
         if(emptyEnabledInputs.length > 0 ){
             const randomIndex=Math.floor(Math.random()* emptyEnabledInputs.length);
             let indexToFill=Array.from(wordToGuess[randomIndex])
-            console.log(randomIndex)
-            console.log(indexToFill)
+            // console.log(randomIndex)
+            // console.log(indexToFill)
             enabledInputs[randomIndex].value=indexToFill[0].toUpperCase();
             enabledInputs[randomIndex+1].focus();
             enabledInputs[randomIndex].classList.add('yes-in-place');
@@ -206,8 +211,8 @@ function handelBackspace(event){
         if(currentIndex > 0){
             const currentInput=inputs[currentIndex]
             const prevInput=inputs[currentIndex-1]
-            console.log(currentInput)
-            console.log(prevInput)
+            // console.log(currentInput)
+            // console.log(prevInput)
             currentInput.value='';
             prevInput.value='';
             prevInput.focus()
